@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:iti_malia/components/image_detail.dart';
+import 'package:iti_malia/features/Design/colors.dart';
 
 class ShowImage extends StatelessWidget {
 
@@ -16,27 +18,47 @@ class ShowImage extends StatelessWidget {
           top: size.width * 0.01,
           bottom: size.width * 0.01
       ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Image.asset(
-            'assets/images/background_image.png',
-            width: size.width,
-            height: size.width * 0.7,
-            color: Colors.white.withOpacity(0.8),
-            fit: BoxFit.fill,
+      child: GestureDetector(
+        onTap: (){
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context)=>DetailImage(image: image))
+          );
+        },
+        child: _image(size),
+      )
+    );
+  }
+
+  Widget _image(Size size){
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Container(
+          width: size.width,
+          height: size.width * 0.6,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              border: Border.all(
+                  color: DesignColors.orange(),
+                  width: 2
+              )
           ),
-          Container(
-            margin: EdgeInsets.only(top: size.width * 0.06),
-            child: Image.network(
-              image,
-              width: size.width * 0.8,
-              height: size.width * 0.5,
-              fit: BoxFit.fitHeight,
+          child: Center(
+            child: Icon(
+              Icons.pets,
+              color: DesignColors.orange(),
+              size: size.width * 0.25,
             ),
           ),
-        ],
-      ),
+        ),
+        Image.network(
+          image,
+          width: size.width * 0.9,
+          height: size.width * 0.5,
+          fit: BoxFit.fitHeight,
+        ),
+      ],
     );
   }
 }

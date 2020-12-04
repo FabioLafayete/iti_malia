@@ -16,14 +16,14 @@ class Button {
         width: MediaQuery.of(context).size.width * 0.8,
         height: height ?? 50,
         child: RaisedButton(
-          disabledColor: DesignColors.blue().withOpacity(0.35),
+          disabledColor: DesignColors.orange().withOpacity(0.35),
           elevation: elevation ?? 5,
           splashColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
           onPressed: onPressed,
-          color: DesignColors.blue(),
+          color: DesignColors.orange(),
           child: !isLoading ?
           Text(text,
             style: TextStyle(

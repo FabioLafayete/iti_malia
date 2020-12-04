@@ -13,7 +13,7 @@ class _HomeState extends State<Home> {
   PageController _pageController;
   int page = 0;
 
-  Color darkBlue = DesignColors.darkBlue();
+  Color orange = DesignColors.orange();
 
   @override
   void initState() {
@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: darkBlue,
+      backgroundColor: Colors.white,
       appBar: _appBar(size),
       body: PageView(
         onPageChanged: (p) => setState(() => page = p),
@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
             type: BottomNavigationBarType.fixed,
             unselectedItemColor: Colors.grey,
             selectedItemColor: Colors.white,
-            backgroundColor: darkBlue,
+            backgroundColor: orange,
             showSelectedLabels: false,
             showUnselectedLabels: false,
 
@@ -70,7 +70,7 @@ class _HomeState extends State<Home> {
 
   Widget _appBar(Size size){
     return AppBar(
-        backgroundColor: darkBlue,
+        backgroundColor: orange,
         elevation: 0.0,
         centerTitle: true,
         title: Image.asset(
@@ -78,13 +78,6 @@ class _HomeState extends State<Home> {
           width: size.width * 0.38,
           color: Colors.white,
         ),
-      // actions: [
-      //   if(page == 0)
-      //     IconButton(
-      //         icon: Icon(Icons.filter_list),
-      //         onPressed: (){}
-      //       )
-      // ],
     );
   }
 

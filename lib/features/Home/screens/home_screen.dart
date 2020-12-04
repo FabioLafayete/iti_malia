@@ -14,8 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  Color darkBlue = DesignColors.darkBlue();
-  Color dark = DesignColors.dark();
+  Color white = DesignColors.white();
 
   Future<List<String>> _fetchBreeds;
 
@@ -33,11 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [dark, darkBlue, dark],
-        ),
+        color: white
       ),
       padding: EdgeInsets.all(size.width * 0.05),
       child:  FutureBuilder(
@@ -67,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   'Escolha uma raça',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: size.width * 0.07,
                       fontWeight: FontWeight.bold
                   )

@@ -13,7 +13,7 @@ class ListBreeds extends StatelessWidget {
 
     Size size = MediaQuery.of(context).size;
 
-    Color blue = DesignColors.blue();
+    Color orange = DesignColors.orange();
 
     return GestureDetector(
       onTap: (){
@@ -29,13 +29,8 @@ class ListBreeds extends StatelessWidget {
             bottom: size.width * 0.02
         ),
         decoration: BoxDecoration(
-            color: DesignColors.blue(),
+            color: orange.withOpacity(0.9),
             borderRadius: BorderRadius.all(Radius.circular(10)),
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [blue, Colors.lightBlue.withOpacity(0.9)],
-            ),
             border: Border.all(
                 color: Colors.white,
                 width: 0.3

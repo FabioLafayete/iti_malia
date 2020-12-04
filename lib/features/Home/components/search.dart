@@ -13,6 +13,7 @@ class SearchBreeds extends StatefulWidget {
 class _SearchBreedsState extends State<SearchBreeds> {
 
   Color blue = DesignColors.blue();
+  var _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,29 +23,42 @@ class _SearchBreedsState extends State<SearchBreeds> {
 
     return Container(
       decoration: BoxDecoration(
-          color: DesignColors.darkBlue(),
+          color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(50)),
           border: Border.all(
-              color: Colors.white,
+              color: Colors.black,
               width: 0.3
           )
       ),
       margin: EdgeInsets.only(bottom: size.width * 0.02),
-      padding: EdgeInsets.all(size.width * 0.03),
+      padding: EdgeInsets.all(size.width * 0.028),
       width: size.width,
       height: size.width * 0.12,
       child: TextField(
-        style: TextStyle(color: Colors.white),
-        cursorColor: Colors.white,
+        controller: _controller,
+        style: TextStyle(color: Colors.black),
+        cursorColor: Colors.black,
         inputFormatters: [LengthLimitingTextInputFormatter(25)],
         decoration: InputDecoration(
           hintText: 'Procurar raça...',
-          hintStyle: TextStyle(color: Colors.white.withOpacity(0.8)),
+          hintStyle: TextStyle(color: Colors.black.withOpacity(0.8)),
           contentPadding: EdgeInsets.only(top: size.width * 0.1),
           icon: Icon(
             Icons.search,
-            color: Colors.white,
+            color: DesignColors.orange(),
             size: size.width * 0.07,
+          ),
+          suffixIcon: IconButton(
+            onPressed: () {
+              _controller.clear();
+              bloc.inSearch.add('');
+            },
+            padding: EdgeInsets.only(bottom: size.width * 0.1),
+            icon: Icon(
+              Icons.clear,
+              color: DesignColors.orange(),
+              size: size.width * 0.07
+            ),
           ),
           focusedBorder: InputBorder.none,
           enabledBorder: InputBorder.none,

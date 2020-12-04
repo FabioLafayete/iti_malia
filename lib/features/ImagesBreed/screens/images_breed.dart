@@ -17,8 +17,11 @@ class ImagesBreed extends StatefulWidget {
 
 class _ImagesBreedState extends State<ImagesBreed> {
 
-  Color darkBlue = DesignColors.darkBlue();
+  Color orange = DesignColors.orange();
+  Color white = DesignColors.white();
   Color dark = DesignColors.dark();
+  int listLimit = 10;
+  bool load = false;
 
   Future<List<dynamic>> _fetchImagesBreeds;
 
@@ -35,16 +38,10 @@ class _ImagesBreedState extends State<ImagesBreed> {
 
 
     return Scaffold(
-      backgroundColor: darkBlue,
+      backgroundColor: white,
       appBar: _appBar(size),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [dark, darkBlue, dark],
-          ),
-        ),
+        color: white,
         padding: EdgeInsets.all(size.width * 0.05),
         child: FutureBuilder(
           future: this._fetchImagesBreeds,
@@ -65,37 +62,75 @@ class _ImagesBreedState extends State<ImagesBreed> {
                 ),
               );
             }
-            
+
+            if(snapshot.data.length <= 10){
+              listLimit = snapshot.data.length;
+            }
+
             return Column(
               children: [
                 Text(
-                    'Imagens Fofaaaas',
+                    'Só fofura por aqui 🥰',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: size.width * 0.07,
                         fontWeight: FontWeight.bold
                     )
                 ),
-                SizedBox(height: size.width * 0.06),
+                SizedBox(height: size.width * 0.02),
                 Expanded(
-                    child: ListView(
-                      children: List.generate(
-                              10,
-                              (index) =>
-                                  ShowImage(
-                                      image: snapshot.data[index]
-                                  )
-                      )..add(Container()),
+                    child: NotificationListener<ScrollNotification>(
+                      onNotification: (scroll){
+                        if(!load && scroll.metrics.pixels == scroll.metrics.maxScrollExtent){
+                          _loadMore(snapshot.data);
+                        }
+                        return null;
+                      },
+                      child: ListView(
+                        children: List.generate(
+                                listLimit,
+                                (index) =>
+                                    ShowImage(
+                                        image: snapshot.data[index]
+                                    )
+                        )..add(!load ? EndImage() : _loading()),
+                      ),
                     )
                 ),
               ],
             );
-            
+
           },
         ),
       ),
     );
+  }
+
+  Widget _loading(){
+    return Container(
+      margin: EdgeInsets.only(top: 20, bottom: 20),
+      child: Center(
+          child: CircularProgressIndicator(
+              valueColor: new AlwaysStoppedAnimation<Color>(orange)
+          )
+      ),
+    );
+  }
+
+  Future _loadMore(List list) async {
+
+    if(listLimit < list.length){
+      setState(() => load = true);
+      await Future.delayed(Duration(seconds: 2));
+      if((listLimit + 10) > list.length){
+        setState(() => listLimit = list.length);
+      } else {
+        setState(() => listLimit += 10);
+      }
+      setState(() => load = false);
+    }
+
   }
 
   void refreshList() {
@@ -106,7 +141,7 @@ class _ImagesBreedState extends State<ImagesBreed> {
 
   Widget _appBar(Size size){
     return AppBar(
-      backgroundColor: darkBlue,
+      backgroundColor: orange,
       elevation: 0.0,
       centerTitle: true,
       title: Text(

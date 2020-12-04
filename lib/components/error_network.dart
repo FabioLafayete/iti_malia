@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iti_malia/features/Design/colors.dart';
 
 import 'button.dart';
 
@@ -16,7 +17,7 @@ class ErrorNetwork {
         Container(
           margin: EdgeInsets.only(left: 20, right: 20),
           child: Material(
-            elevation: 2,
+            elevation: 5,
             shadowColor: Colors.white,
             borderRadius: BorderRadius.circular(20),
             child: Container(
@@ -41,7 +42,7 @@ class ErrorNetwork {
         Button.defaultButton(
             context: context,
             text: 'Tentar novamente',
-            onPressed: () => function()
+            onPressed: () => function(),
         )
       ],
     );
@@ -53,7 +54,7 @@ class ErrorNetwork {
         child: Icon(
             Icons.wifi_off,
             size: size.width * 0.1,
-            color: Colors.blue
+            color: DesignColors.orange()
         )
     );
   }
