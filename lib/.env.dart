@@ -1,3 +1,3 @@
 const environment = {
-  'baseUrl': 'https://dog.ceo/api/breeds'
+  'baseUrl': 'https://dog.ceo/api'
 };
