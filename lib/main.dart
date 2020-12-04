@@ -1,4 +1,6 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
+import 'package:iti_malia/features/Home/bloc/bloc_search.dart';
 
 import 'features/Home/screens/home.dart';
 
@@ -15,7 +17,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Home(),
+      home: BlocProvider(
+          bloc: SearchBloc(),
+          child: Home()
+      ),
     );
   }
 }

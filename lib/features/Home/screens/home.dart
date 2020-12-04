@@ -73,20 +73,18 @@ class _HomeState extends State<Home> {
         backgroundColor: darkBlue,
         elevation: 0.0,
         centerTitle: true,
-        title: Text(
-          'Iti Malia',
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: size.width * 0.05
-          ),
+        title: Image.asset(
+          'assets/images/logo_branco_appbar.png',
+          width: size.width * 0.38,
+          color: Colors.white,
         ),
-      actions: [
-        if(page == 0)
-          IconButton(
-              icon: Icon(Icons.filter_list),
-              onPressed: (){}
-            )
-      ],
+      // actions: [
+      //   if(page == 0)
+      //     IconButton(
+      //         icon: Icon(Icons.filter_list),
+      //         onPressed: (){}
+      //       )
+      // ],
     );
   }
 

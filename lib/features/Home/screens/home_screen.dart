@@ -1,7 +1,10 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:iti_malia/components/error_network.dart';
 import 'package:iti_malia/features/Design/colors.dart';
+import 'package:iti_malia/features/Home/bloc/bloc_search.dart';
 import 'package:iti_malia/features/Home/components/list_breeds.dart';
+import 'package:iti_malia/features/Home/components/search.dart';
 import 'package:iti_malia/features/Home/repository/breeds.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,6 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
+    final bloc = BlocProvider.of<SearchBloc>(context);
+
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -38,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child:  FutureBuilder(
         future: this._fetchBreeds,
         builder: (context, AsyncSnapshot<List<String>>snapshot){
+
           if(snapshot.connectionState == ConnectionState.waiting){
             return Center(
               child: CircularProgressIndicator(),
@@ -67,17 +73,29 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
               ),
               SizedBox(height: size.width * 0.06),
-              Expanded(
-                child: ListView(
-                  shrinkWrap: true,
-                  children: List.generate(
-                      snapshot.data.length,
-                          (index) => ListBreeds(
-                        breed: snapshot.data[index],
-                      )
-                  ),
-                ),
-              ),
+              SearchBreeds(),
+              StreamBuilder(
+                stream: bloc.outSearch,
+                initialData: '',
+                builder: (_, snap){
+
+                  List<String> result = snapshot.data.where(
+                          (value) => value.contains(snap.data)
+                  ).toList();
+
+                  return Expanded(
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: List.generate(
+                              result.length,
+                              (index) => ListBreeds(
+                                breed: result[index],
+                              )
+                      ),
+                    ),
+                  );
+                },
+              )
             ],
           );
         },
