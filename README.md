@@ -1,6 +1,6 @@
 # iti_malia
 
-Fotos fofas de cachorros *-*
+Fotos fofas de cachorros 🥰
 
 ## Getting Started
 
