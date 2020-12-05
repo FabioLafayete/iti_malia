@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:iti_malia/features/Design/colors.dart';
 
 class EndImage extends StatelessWidget {
+
+  final bool showText;
+
+  EndImage({this.showText = true});
+
   @override
   Widget build(BuildContext context) {
 
@@ -15,14 +19,15 @@ class EndImage extends StatelessWidget {
       child: Column(
         children: [
           _image(size),
-          Text(
-              'Que pena, \nacabou as fotos 😩',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: size.width * 0.06,
-              fontWeight: FontWeight.bold
-            ),
-          )
+          if(showText)
+            Text(
+                'Que pena, \nacabou as fotos 😩',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: size.width * 0.06,
+                fontWeight: FontWeight.bold
+              ),
+            )
         ],
       ),
     );

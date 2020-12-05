@@ -6,6 +6,7 @@ import 'package:iti_malia/features/Home/bloc/bloc_search.dart';
 import 'package:iti_malia/features/Home/components/list_breeds.dart';
 import 'package:iti_malia/features/Home/components/search.dart';
 import 'package:iti_malia/features/Home/repository/breeds.dart';
+import 'package:iti_malia/features/ImagesBreed/components/end_image.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -86,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               (index) => ListBreeds(
                                 breed: result[index],
                               )
-                      ),
+                      )..add(EndImage(showText: false)),
                     ),
                   );
                 },

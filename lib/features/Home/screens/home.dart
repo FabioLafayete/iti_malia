@@ -10,22 +10,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  PageController _pageController;
-  int page = 0;
-
   Color orange = DesignColors.orange();
-
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _pageController.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,37 +19,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: _appBar(size),
-      body: PageView(
-        onPageChanged: (p) => setState(() => page = p),
-        controller: _pageController,
-        children: [
-          HomeScreen(),
-          Container(color: Colors.red),
-        ],
-      ),
-        bottomNavigationBar: BottomNavigationBar(
-            iconSize: size.width * 0.08,
-            elevation: 0.0,
-            type: BottomNavigationBarType.fixed,
-            unselectedItemColor: Colors.grey,
-            selectedItemColor: Colors.white,
-            backgroundColor: orange,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-
-            currentIndex: page,
-            onTap: (p){
-              _pageController.animateToPage(
-                  p,
-                  duration: Duration(milliseconds: 500),
-                  curve: Curves.ease
-              );
-            },
-            items: [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-              BottomNavigationBarItem(icon: Icon(Icons.pets_rounded), label: 'Aleatório'),
-            ]
-        )
+      body: HomeScreen(),
     );
   }
 
