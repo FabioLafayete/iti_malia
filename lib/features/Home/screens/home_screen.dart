@@ -1,5 +1,6 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:iti_malia/components/error_network.dart';
 import 'package:iti_malia/features/Design/colors.dart';
 import 'package:iti_malia/features/Home/bloc/bloc_search.dart';
@@ -62,10 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
               Text(
                   'Escolha uma raça',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.black,
+                  style: GoogleFonts.coiny(
+                      color: Colors.black.withOpacity(0.9),
                       fontSize: size.width * 0.07,
-                      fontWeight: FontWeight.bold
                   )
               ),
               SizedBox(height: size.width * 0.06),

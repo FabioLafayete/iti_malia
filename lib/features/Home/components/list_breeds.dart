@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:iti_malia/features/Design/colors.dart';
 import 'package:iti_malia/features/ImagesBreed/screens/images_breed.dart';
 
@@ -38,10 +39,9 @@ class ListBreeds extends StatelessWidget {
         ),
         child: Text(
             '${breed[0].toUpperCase()}${breed.substring(1)}',
-            style: TextStyle(
+            style: GoogleFonts.coiny(
               color: Colors.white,
               fontSize: size.width * 0.05,
-              fontWeight: FontWeight.bold,
             )
         ),
       ),

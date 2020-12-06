@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
         elevation: 0.0,
         centerTitle: true,
         title: Image.asset(
-          'assets/images/logo_branco_appbar.png',
+          'assets/images/logo.png',
           width: size.width * 0.38,
           color: Colors.white,
         ),

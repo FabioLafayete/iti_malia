@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:iti_malia/components/error_network.dart';
 import 'package:iti_malia/features/Design/colors.dart';
 import 'package:iti_malia/features/ImagesBreed/components/end_image.dart';
@@ -72,10 +73,9 @@ class _ImagesBreedState extends State<ImagesBreed> {
                 Text(
                     'Só fofura por aqui 🥰',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: size.width * 0.07,
-                        fontWeight: FontWeight.bold
+                    style: GoogleFonts.coiny(
+                        color: Colors.black.withOpacity(0.9),
+                        fontSize: size.width * 0.07
                     )
                 ),
                 SizedBox(height: size.width * 0.02),
@@ -146,10 +146,9 @@ class _ImagesBreedState extends State<ImagesBreed> {
       centerTitle: true,
       title: Text(
           '${widget.breed[0].toUpperCase()}${widget.breed.substring(1)}',
-          style: TextStyle(
+          style: GoogleFonts.coiny(
               color: Colors.white,
               fontSize: size.width * 0.06,
-              fontWeight: FontWeight.bold
           )
       )
     );

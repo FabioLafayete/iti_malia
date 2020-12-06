@@ -1,6 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:iti_malia/features/Design/colors.dart';
 import 'package:iti_malia/features/Home/bloc/bloc_search.dart';
 
@@ -36,7 +37,7 @@ class _SearchBreedsState extends State<SearchBreeds> {
       height: size.width * 0.12,
       child: TextField(
         controller: _controller,
-        style: TextStyle(color: Colors.black),
+        style: GoogleFonts.coiny(color: Colors.black.withOpacity(0.9)),
         cursorColor: Colors.black,
         inputFormatters: [LengthLimitingTextInputFormatter(25)],
         decoration: InputDecoration(
@@ -52,6 +53,7 @@ class _SearchBreedsState extends State<SearchBreeds> {
             onPressed: () {
               _controller.clear();
               bloc.inSearch.add('');
+              FocusScope.of(context).unfocus();
             },
             padding: EdgeInsets.only(bottom: size.width * 0.1),
             icon: Icon(
@@ -65,7 +67,7 @@ class _SearchBreedsState extends State<SearchBreeds> {
           errorBorder: InputBorder.none,
           disabledBorder: InputBorder.none,
         ),
-        onChanged: (text) => bloc.inSearch.add(text),
+        onChanged: (text) => bloc.inSearch.add(text.toLowerCase().trim()),
       ),
     );
   }
