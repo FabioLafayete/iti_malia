@@ -5,7 +5,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="iti_malia"
+        android:label="Iti Malia"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
